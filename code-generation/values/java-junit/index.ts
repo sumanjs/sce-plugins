@@ -2,10 +2,11 @@ import {SceEvent, SceMain} from "../../interfaces";
 
 
 
-export class JavaJUnitGenerator implements SceMain {
+export class CodeGenerator implements SceMain {
   
-  rawCode = '';
-  styledCode = '';
+  private rawCode = '';
+  private styledCode = '';
+  public static pluginName = 'java-junit';
   
   constructor(){
   
@@ -18,6 +19,10 @@ export class JavaJUnitGenerator implements SceMain {
   
   getStyledGeneratedCode() {
     return this.styledCode;
+  }
+  
+  onComplete(){
+  
   }
   
   
