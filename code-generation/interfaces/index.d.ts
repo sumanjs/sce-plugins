@@ -13,8 +13,6 @@ export interface SceMain {
   
   getStyledGeneratedCode: () => string;
   
-  
-  
 }
 
 

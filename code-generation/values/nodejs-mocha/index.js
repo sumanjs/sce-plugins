@@ -15,7 +15,7 @@ var CodeGenerator = (function () {
     };
     CodeGenerator.prototype.onNextEvent = function (ev) {
     };
-    CodeGenerator.pluginName = 'java-junit';
+    CodeGenerator.pluginName = 'nodejs-mocha';
     return CodeGenerator;
 }());
 exports.CodeGenerator = CodeGenerator;
