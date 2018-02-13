@@ -7,13 +7,7 @@ import * as nodejsmocha from './values/nodejs-mocha';
 import * as nodejssuman from './values/nodejs-suman';
 
 
-export const plugins : Array<SceMain>= [
-  
-  
-  
-  
-  
-  
+export const plugins : Array<new() => SceMain>= [
   
   javajunit.CodeGenerator,
   javatestng.CodeGenerator,
