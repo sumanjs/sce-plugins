@@ -16,6 +16,7 @@ var CodeGenerator = (function () {
     CodeGenerator.prototype.onNextEvent = function (ev) {
     };
     CodeGenerator.pluginName = 'nodejs-suman';
+    CodeGenerator.pluginLang = 'nodejs';
     return CodeGenerator;
 }());
 exports.CodeGenerator = CodeGenerator;

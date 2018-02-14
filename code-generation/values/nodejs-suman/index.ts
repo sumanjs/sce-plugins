@@ -7,6 +7,7 @@ export class CodeGenerator implements SceMain {
   private rawCode = '';
   private styledCode = '';
   public static pluginName = 'nodejs-suman';
+  public static pluginLang = 'nodejs';
   
   constructor(){
   

@@ -1,2 +1,3 @@
 import { SceMain } from "./interfaces";
-export declare const plugins: Array<new () => SceMain>;
+export declare type SCECodeGenType = new () => SceMain;
+export declare const plugins: Array<SCECodeGenType>;
