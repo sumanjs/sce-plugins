@@ -1,6 +1,6 @@
 {
   "name": "sce-plugins",
-  "version": "0.0.101",
+  "version": "0.0.102",
   "description": "Plugins for the Suman Chrome Extension",
   "main": "index.js",
   "scripts": {
