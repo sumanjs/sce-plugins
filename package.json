@@ -1,0 +1,28 @@
+{
+  "name": "sce-plugins",
+  "version": "0.0.101",
+  "description": "Plugins for the Suman Chrome Extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "suman"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/sumanjs/sce-plugins.git"
+  },
+  "keywords": [
+    "suman",
+    "sumanjs",
+    "testing",
+    "selenium",
+    "chrome",
+    "extension",
+    "google-chrome"
+  ],
+  "author": "Olegzandr VD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/sumanjs/sce-plugins/issues"
+  },
+  "homepage": "https://gitlab.com/sumanjs/sce-plugins#README"
+}
