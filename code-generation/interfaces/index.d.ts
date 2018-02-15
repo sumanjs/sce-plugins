@@ -5,6 +5,8 @@ export interface SceEvent {
 
 export interface SceMain {
   
+  initialize: () => void;
+  
   onComplete: () => void;
   
   onNextEvent: (ev: SceEvent) => void;

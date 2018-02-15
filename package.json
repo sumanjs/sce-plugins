@@ -24,5 +24,13 @@
   "bugs": {
     "url": "https://gitlab.com/sumanjs/sce-plugins/issues"
   },
-  "homepage": "https://gitlab.com/sumanjs/sce-plugins#README"
+  "homepage": "https://gitlab.com/sumanjs/sce-plugins#README",
+  "devDependencies": {
+    "@types/core-js": "^0.9.46",
+    "@types/handlebars": "^4.0.36",
+    "@types/node": "^9.4.6"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  }
 }

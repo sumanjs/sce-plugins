@@ -12,6 +12,10 @@ export class CodeGenerator implements SceMain {
   
   }
   
+  initialize(){
+  
+  }
+  
   getRawGeneratedCode() {
     return this.rawCode;
   }

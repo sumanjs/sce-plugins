@@ -5,6 +5,8 @@ var CodeGenerator = (function () {
         this.rawCode = '';
         this.styledCode = '';
     }
+    CodeGenerator.prototype.initialize = function () {
+    };
     CodeGenerator.prototype.getRawGeneratedCode = function () {
         return this.rawCode;
     };
