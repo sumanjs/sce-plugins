@@ -1,4 +1,4 @@
-import {SceEvent, SceMain} from "../../interfaces";
+import {SceEvent, SceMain, Updateable} from "../../interfaces";
 import {values} from './lib/data';
 
 export class CodeGenerator implements SceMain {
@@ -35,7 +35,9 @@ export class CodeGenerator implements SceMain {
   }
   
   getRawGeneratedCode() {
-    return this.rawCode;
+    // return this.codeTreeRoot.generate();
+    // // return this.rawCode;
+    return 'parachute (java junit)';
   }
   
   getStyledGeneratedCode() {
@@ -46,50 +48,12 @@ export class CodeGenerator implements SceMain {
   
   }
   
-  onNextEvent(m: SceEvent | any) {
-  
+  onNextEvent(m: SceEvent | any, x: Updateable) {
     
-    console.log('adding data to generated code...');
-  
-    if (this.inHook) {
-      this.inHook = false;
-      this.currentNode = this.currentNode.exitRightFromSumanHook('up');
-      this.codeTreeRoot.clearAllMarkers();
-    }
-  
-    if (this.inContextBlock) {
-      this.inContextBlock = false;
-      this.currentNode = this.currentNode.exitRightFromSumanBlock('up');
-      this.codeTreeRoot.clearAllMarkers();
-    }
-  
-    this.currentNode = this.currentNode.setRightMost(values['context'].copy());
-    this.inContextBlock = true;
-  
-    if (String(m.eventName) === 'sumanload') {
-      this.currentNode = this.currentNode.setRightMost(values.before.copy().render());
-      this.currentNode = this.currentNode.setLeftMost(values['driver.get'].copy().render({driverGetURL: m.location.href}));
-      this.inHook = true;
-    }
-  
-    if (String(m.eventName) === 'click') {
-      this.currentNode = this.currentNode.setRightMost(values.before.copy().render());
-      this.currentNode = this.currentNode.setLeftMost(values['driver.find.hook'].copy().render({driverGetURL: m.location.href}));
-      this.inHook = true;
-    }
-  
-    if (this.inHook) {
-      this.currentNode = this.currentNode.exitRightFromSumanHook('up');
-      this.codeTreeRoot.clearAllMarkers();
-      this.inHook = false;
-    }
-  
-    this.currentNode = this.currentNode.setRightMost(values['it'].copy());
-    this.currentNode.setLeftMost(values['it.el'].copy());
     
     // fire callback letting UI know of currently generated code
-    // this.updateCode();
-  
+    x.updateCode();
+    
   }
   
 }

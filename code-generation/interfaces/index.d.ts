@@ -1,6 +1,9 @@
-
 export interface SceEvent {
 
+}
+
+export interface Updateable {
+  updateCode: () => any;
 }
 
 export interface SceMain {
@@ -9,7 +12,7 @@ export interface SceMain {
   
   onComplete: () => void;
   
-  onNextEvent: (ev: SceEvent) => void;
+  onNextEvent: (ev: SceEvent, x: Updateable) => void;
   
   getRawGeneratedCode: () => string;
   

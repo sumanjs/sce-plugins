@@ -1,4 +1,4 @@
-import {SceEvent, SceMain} from "../../interfaces";
+import {SceEvent, SceMain, Updateable} from "../../interfaces";
 
 
 
@@ -17,7 +17,8 @@ export class CodeGenerator implements SceMain {
   }
   
   getRawGeneratedCode() {
-    return this.rawCode;
+    // return this.rawCode;
+    return 'gnarnia (java testng)';
   }
   
   
@@ -30,7 +31,9 @@ export class CodeGenerator implements SceMain {
   }
   
   
-  onNextEvent(ev: SceEvent) {
+  onNextEvent(ev: SceEvent, x: Updateable) {
+    
+    x.updateCode();
   
   }
   

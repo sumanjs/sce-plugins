@@ -8,14 +8,15 @@ var CodeGenerator = (function () {
     CodeGenerator.prototype.initialize = function () {
     };
     CodeGenerator.prototype.getRawGeneratedCode = function () {
-        return this.rawCode;
+        return 'gnarnia (java testng)';
     };
     CodeGenerator.prototype.getStyledGeneratedCode = function () {
         return this.styledCode;
     };
     CodeGenerator.prototype.onComplete = function () {
     };
-    CodeGenerator.prototype.onNextEvent = function (ev) {
+    CodeGenerator.prototype.onNextEvent = function (ev, x) {
+        x.updateCode();
     };
     CodeGenerator.pluginName = 'java-test-ng';
     return CodeGenerator;

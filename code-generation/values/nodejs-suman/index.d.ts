@@ -1,13 +1,19 @@
-import { SceEvent, SceMain } from "../../interfaces";
+import { SceEvent, SceMain, Updateable } from "../../interfaces";
 export declare class CodeGenerator implements SceMain {
     private rawCode;
     private styledCode;
     static pluginName: string;
-    static pluginLang: string;
+    codeTreeRoot: any;
+    currentNode: any;
+    tempNode: any;
+    inHook: boolean;
+    inContextBlock: boolean;
+    ctxCount: number;
+    testCaseCount: number;
     constructor();
     initialize(): void;
-    getRawGeneratedCode(): string;
+    getRawGeneratedCode(): any;
     getStyledGeneratedCode(): string;
     onComplete(): void;
-    onNextEvent(ev: SceEvent): void;
+    onNextEvent(m: SceEvent | any, x: Updateable): void;
 }
