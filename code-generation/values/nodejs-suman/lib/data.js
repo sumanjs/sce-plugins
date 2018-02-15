@@ -2,6 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var data_proto_1 = require("./data-proto");
 exports.values = {
+    'nemo': {
+        'left': 'begin',
+        'middle': null,
+        'right': 'end'
+    },
     'top': {
         root: true,
         left: '#!/usr/bin/env node',

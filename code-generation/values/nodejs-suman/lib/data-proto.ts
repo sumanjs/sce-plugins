@@ -244,7 +244,7 @@ export const proto = {
     console.error('no marker:', util.inspect(this));
     throw new Error('no marker');
   },
-
+  
   getLeftMost() {
 
     if (!this.left) {

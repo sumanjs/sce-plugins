@@ -3,10 +3,11 @@ export declare class CodeGenerator implements SceMain {
     private rawCode;
     private styledCode;
     static pluginName: string;
+    code: any;
     constructor();
     initialize(): void;
     getRawGeneratedCode(): string;
     getStyledGeneratedCode(): string;
-    onComplete(): void;
+    onComplete(x: Updateable): void;
     onNextEvent(ev: SceEvent, x: Updateable): void;
 }

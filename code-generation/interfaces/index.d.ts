@@ -10,7 +10,7 @@ export interface SceMain {
   
   initialize: () => void;
   
-  onComplete: () => void;
+  onComplete: (x: Updateable) => void;
   
   onNextEvent: (ev: SceEvent, x: Updateable) => void;
   

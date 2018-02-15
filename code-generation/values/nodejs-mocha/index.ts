@@ -7,6 +7,7 @@ export class CodeGenerator implements SceMain {
   private rawCode = '';
   private styledCode = '';
   public static pluginName = 'nodejs-mocha';
+  public code = [] as any;
   
   constructor(){
   
@@ -19,7 +20,7 @@ export class CodeGenerator implements SceMain {
   getRawGeneratedCode() {
     // return this.rawCode;
     
-    return 'poodles (nodejs-mocha)';
+    return 'poodles (nodejs-mocha) ' + this.code.join(' ');
   }
   
   
@@ -27,13 +28,14 @@ export class CodeGenerator implements SceMain {
     return this.styledCode;
   }
   
-  onComplete(){
-  
+  onComplete(x: Updateable){
+    this.code.push('complete');
+    x.updateCode();
   }
-  
   
   onNextEvent(ev: SceEvent, x: Updateable) {
   
+    this.code.push(this.code.length);
     x.updateCode();
   }
   
