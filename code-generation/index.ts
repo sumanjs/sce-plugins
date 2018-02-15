@@ -1,4 +1,5 @@
-import {SceMain} from "./interfaces";
+import {SceEvent, SceMain, Updateable} from "sce-plugin-typings";
+
 export {SceMain};
 
 // generators

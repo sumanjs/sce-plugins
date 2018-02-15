@@ -1,5 +1,4 @@
-import {SceEvent, SceMain, Updateable} from "../../interfaces";
-
+import {SceEvent, SceMain, Updateable} from "sce-plugin-typings";
 
 
 export class CodeGenerator implements SceMain {
