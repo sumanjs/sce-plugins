@@ -1,6 +1,6 @@
 {
   "name": "sce-plugins",
-  "version": "0.0.104",
+  "version": "0.0.105",
   "description": "Plugins for the Suman Chrome Extension",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "@types/core-js": "^0.9.46",
     "@types/handlebars": "^4.0.36",
     "@types/node": "^9.4.6",
-    "sce-plugin-typings": "latest"
+    "sce-plugin-typings": "0.0.104"
   },
   "dependencies": {
     "handlebars": "^4.0.11"
