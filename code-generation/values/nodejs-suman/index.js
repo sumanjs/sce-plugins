@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var data_1 = require("./lib/data");
-var CodeGenerator = (function () {
-    function CodeGenerator() {
+var SCEPlugin = (function () {
+    function SCEPlugin() {
         this.rawCode = '';
         this.styledCode = '';
         this.codeTreeRoot = data_1.values.top.copy();
@@ -12,7 +12,7 @@ var CodeGenerator = (function () {
         this.ctxCount = 0;
         this.testCaseCount = 0;
     }
-    CodeGenerator.prototype.initialize = function () {
+    SCEPlugin.prototype.initialize = function () {
         this.currentNode = this.currentNode.setLeftMost(data_1.values.declare.copy());
         this.currentNode = this.currentNode.setLeftMost(data_1.values.init.copy());
         this.currentNode = this.currentNode.setLeftMost(data_1.values.create.copy());
@@ -21,15 +21,15 @@ var CodeGenerator = (function () {
         this.tempNode = this.currentNode.setLeftMost(data_1.values['after.always'].copy());
         this.tempNode.setLeftMost(data_1.values['driver.quit'].copy());
     };
-    CodeGenerator.prototype.getRawGeneratedCode = function () {
+    SCEPlugin.prototype.getRawGeneratedCode = function () {
         return this.codeTreeRoot.generate();
     };
-    CodeGenerator.prototype.getStyledGeneratedCode = function () {
+    SCEPlugin.prototype.getStyledGeneratedCode = function () {
         return this.styledCode;
     };
-    CodeGenerator.prototype.onComplete = function () {
+    SCEPlugin.prototype.onComplete = function () {
     };
-    CodeGenerator.prototype.onNextEvent = function (m, x) {
+    SCEPlugin.prototype.onNextEvent = function (m, x) {
         console.log('adding data to generated code...');
         if (this.inHook) {
             this.inHook = false;
@@ -62,7 +62,8 @@ var CodeGenerator = (function () {
         this.currentNode.setLeftMost(data_1.values['it.el'].copy());
         x.updateCode();
     };
-    CodeGenerator.pluginName = 'nodejs-suman';
-    return CodeGenerator;
+    SCEPlugin.pluginType = 'code-generator';
+    SCEPlugin.pluginName = 'nodejs-suman';
+    return SCEPlugin;
 }());
-exports.CodeGenerator = CodeGenerator;
+exports.SCEPlugin = SCEPlugin;

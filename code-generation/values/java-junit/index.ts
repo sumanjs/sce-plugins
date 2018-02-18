@@ -1,13 +1,14 @@
 import {SceEvent, SceMain, Updateable} from "sce-plugin-typings";
 import {values} from './lib/data';
 
-export class CodeGenerator implements SceMain {
+export class SCEPlugin implements SceMain {
   
   // rawGeneratedCode = '';
   // formattedCode = ' // (no code generated yet)';
   private rawCode = '';
   private styledCode = '';
   
+  public static pluginType = 'code-generator';
   public static pluginName = 'java-junit';
   
   codeTreeRoot = values.top.copy();

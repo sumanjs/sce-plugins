@@ -1,7 +1,8 @@
-import { SceEvent, SceMain, Updateable } from "../../interfaces";
-export declare class CodeGenerator implements SceMain {
+import { SceEvent, SceMain, Updateable } from "sce-plugin-typings";
+export declare class SCEPlugin implements SceMain {
     private rawCode;
     private styledCode;
+    static pluginType: string;
     static pluginName: string;
     codeTreeRoot: any;
     currentNode: any;

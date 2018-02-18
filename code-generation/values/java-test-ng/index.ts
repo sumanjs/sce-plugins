@@ -1,10 +1,11 @@
 import {SceEvent, SceMain, Updateable} from "sce-plugin-typings";
 
-
-export class CodeGenerator implements SceMain {
+export class SCEPlugin implements SceMain {
   
   private rawCode = '';
   private styledCode = '';
+  public static pluginType = 'code-generator';
+  
   public static pluginName = 'java-test-ng';
   
   constructor(){

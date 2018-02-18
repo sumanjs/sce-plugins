@@ -1,24 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var CodeGenerator = (function () {
-    function CodeGenerator() {
+var SCEPlugin = (function () {
+    function SCEPlugin() {
         this.rawCode = '';
         this.styledCode = '';
     }
-    CodeGenerator.prototype.initialize = function () {
+    SCEPlugin.prototype.initialize = function () {
     };
-    CodeGenerator.prototype.getRawGeneratedCode = function () {
+    SCEPlugin.prototype.getRawGeneratedCode = function () {
         return 'gnarnia (java testng)';
     };
-    CodeGenerator.prototype.getStyledGeneratedCode = function () {
+    SCEPlugin.prototype.getStyledGeneratedCode = function () {
         return this.styledCode;
     };
-    CodeGenerator.prototype.onComplete = function () {
+    SCEPlugin.prototype.onComplete = function () {
     };
-    CodeGenerator.prototype.onNextEvent = function (ev, x) {
+    SCEPlugin.prototype.onNextEvent = function (ev, x) {
         x.updateCode();
     };
-    CodeGenerator.pluginName = 'java-test-ng';
-    return CodeGenerator;
+    SCEPlugin.pluginType = 'code-generator';
+    SCEPlugin.pluginName = 'java-test-ng';
+    return SCEPlugin;
 }());
-exports.CodeGenerator = CodeGenerator;
+exports.SCEPlugin = SCEPlugin;
