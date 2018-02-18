@@ -1,7 +1,5 @@
 import {SceEvent, SceMain, Updateable} from "sce-plugin-typings";
 
-export {SceMain};
-
 // generators
 import * as javajunit from './values/java-junit';
 import * as javatestng from './values/java-test-ng';

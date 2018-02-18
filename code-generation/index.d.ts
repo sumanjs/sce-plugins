@@ -1,5 +1,4 @@
 import { SceMain } from "sce-plugin-typings";
-export { SceMain };
 export declare type SCECodeGenTypeContainer = {
     SCEPlugin: SCECodeGenType;
 };
