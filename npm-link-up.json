@@ -1,0 +1,18 @@
+{
+  "linkToItself": true,
+  "searchRoots": [
+    "$HOME/WebstormProjects/oresoftware/sumanjs"
+  ],
+  "ignore": [
+    "/node_modules/",
+    "/.git/",
+    "/dist/",
+    "/target/"
+  ],
+  "list": [
+    "sce-plugin-typings"
+  ],
+  "comments":[
+    "not comments at this time :)"
+  ]
+}

@@ -29,7 +29,7 @@
     "@types/core-js": "^0.9.46",
     "@types/handlebars": "^4.0.36",
     "@types/node": "^9.4.6",
-    "sce-plugin-typings": "0.0.104"
+    "sce-plugin-typings": "latest"
   },
   "dependencies": {
     "handlebars": "^4.0.11"
