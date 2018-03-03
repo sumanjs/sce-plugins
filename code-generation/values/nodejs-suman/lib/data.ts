@@ -18,6 +18,7 @@ export interface ICopyable {
   [key: string]: ICopyableValue
 }
 
+
 export const values = <ICopyable> {
   
   'nemo': {

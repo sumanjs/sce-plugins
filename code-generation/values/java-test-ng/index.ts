@@ -5,7 +5,6 @@ export class SCEPlugin implements SceMain {
   private rawCode = '';
   private styledCode = '';
   public static pluginType = 'code-generator';
-  
   public static pluginName = 'java-test-ng';
   
   constructor(){
