@@ -3,30 +3,30 @@
 import * as util from 'util';
 const directions = ['left', 'middle', 'right'];
 import * as Handlebars from 'handlebars';
-import {ICopyable} from "./data";
+import { ICopyable } from './data';
 
 ///////////////////////////////////////////////////////
 
 export const proto = {
-
   getParent() {
     return this.parent;
   },
 
   generate() {
-    return [this.left, this.middle, this.right].map(function (v) {
-      if (!v) {
-        return '';
-      }
-      if (typeof v === 'string') {
-        return v;
-      }
-      return v.generate();
-    })
-    .join('\n');
+    return [this.left, this.middle, this.right]
+      .map(function(v) {
+        if (!v) {
+          return '';
+        }
+        if (typeof v === 'string') {
+          return v;
+        }
+        return v.generate();
+      })
+      .join('\n');
   },
 
-  log(indent? : number) {
+  log(indent?: number) {
     // this is for debugging - log the entire tree by calling top.log()
     indent = indent || 0;
     let ws = new Array(indent + 1).join(' '); //whitespace
@@ -34,17 +34,15 @@ export const proto = {
       const val = this[v];
       if (typeof val === 'string') {
         console.log(ws, `/* ${v} */`, val);
-      }
-      else if (val) {
+      } else if (val) {
         console.log();
-        val.log(indent += 2);
+        val.log((indent += 2));
       }
     });
   },
 
-  setLeftMost(v :any) {
-
-    let {z, name} = this.getLeftMostNonStringNode();
+  setLeftMost(v: any) {
+    let { z, name } = this.getLeftMostNonStringNode();
 
     if (!name) {
       name = z.getLeftMost();
@@ -61,8 +59,7 @@ export const proto = {
   },
 
   setRightMost(v: any) {
-
-    let {z, name} = this.getRightMostNonStringNode();
+    let { z, name } = this.getRightMostNonStringNode();
 
     if (!name) {
       name = z.getRightMost();
@@ -76,15 +73,13 @@ export const proto = {
     v.parent = z;
 
     return v;
-
   },
 
   getRightMostNonStringNode() {
-
     if (!this.right) {
       return {
         name: 'right',
-        z: this
+        z: this,
       };
     }
 
@@ -95,7 +90,7 @@ export const proto = {
     if (!this.middle) {
       return {
         name: 'middle',
-        z: this
+        z: this,
       };
     }
 
@@ -106,7 +101,7 @@ export const proto = {
     if (!this.left) {
       return {
         name: 'left',
-        z: this
+        z: this,
       };
     }
 
@@ -115,19 +110,17 @@ export const proto = {
     }
 
     if (this.root) {
-      throw new Error('all items are strings on root')
+      throw new Error('all items are strings on root');
     }
 
     return this.parent.getRightMostNonStringNode();
-
   },
 
   getLeftMostNonStringNode() {
-
     if (!this.left) {
       return {
         name: 'left',
-        z: this
+        z: this,
       };
     }
 
@@ -138,7 +131,7 @@ export const proto = {
     if (!this.middle) {
       return {
         name: 'middle',
-        z: this
+        z: this,
       };
     }
 
@@ -149,7 +142,7 @@ export const proto = {
     if (!this.right) {
       return {
         name: 'right',
-        z: this
+        z: this,
       };
     }
 
@@ -158,21 +151,21 @@ export const proto = {
     }
 
     if (this.root) {
-      throw new Error('all items are strings on root')
+      throw new Error('all items are strings on root');
     }
 
     return this.parent.getLeftMostNonStringNode();
-
   },
 
   getRightMostWithMarker() {
-
-    directions.reduce(((a: any, b: any) => {
+    directions.reduce(
+      ((a: any, b: any) => {
         if (this[b] && this[b].simpleMarker) a++;
         if (a > 1) throw new Error('more than one simpleMarker.');
         return a;
       }) as any,
-      0);
+      0
+    );
 
     if (this.right && this.right.simpleMarker) {
       return this.right;
@@ -207,13 +200,14 @@ export const proto = {
   },
 
   getLeftMostWithMarker() {
-
-    directions.reduce(((a: any, b: any) => {
+    directions.reduce(
+      ((a: any, b: any) => {
         if (this[b] && this[b].simpleMarker) a++;
         if (a > 1) throw new Error('more than one simpleMarker.');
         return a;
       }) as any,
-      0);
+      0
+    );
 
     if (this.left && this.left.simpleMarker) {
       return this.left;
@@ -246,7 +240,6 @@ export const proto = {
   },
 
   getLeftMost() {
-
     if (!this.left) {
       return 'left';
     }
@@ -263,7 +256,6 @@ export const proto = {
   },
 
   getRightMost() {
-
     if (!this.right) {
       return 'right';
     }
@@ -289,22 +281,21 @@ export const proto = {
   },
 
   exitRightFromSumanHook(downOrUp: string, prevWasHook: boolean) {
-
     if (downOrUp === 'up') {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.')
+      throw new Error('must be either up or down.');
     }
 
-    if(downOrUp === 'up' && prevWasHook){
+    if (downOrUp === 'up' && prevWasHook) {
       return this;
     }
 
     if (this.root === true) {
       let lm = this.getRightMostWithMarker();
-      return lm.exitRightFromSumanHook('down')
+      return lm.exitRightFromSumanHook('down');
     }
 
     if (this['suman.hook'] && downOrUp === 'up') {
@@ -332,22 +323,21 @@ export const proto = {
   },
 
   exitRightFromSumanBlock(downOrUp: string, prevWasHook: boolean) {
-
     if (downOrUp === 'up') {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.')
+      throw new Error('must be either up or down.');
     }
 
-    if(downOrUp === 'up' && prevWasHook){
+    if (downOrUp === 'up' && prevWasHook) {
       return this;
     }
 
     if (this.root === true) {
       let lm = this.getRightMostWithMarker();
-      return lm.exitRightFromSumanBlock('down')
+      return lm.exitRightFromSumanBlock('down');
     }
 
     if (this['suman.block'] && downOrUp === 'up') {
@@ -359,7 +349,7 @@ export const proto = {
       return this.parent.padded ? this.parent.parent : this.parent;
     }
 
-    if (!this['suman.block'] && downOrUp === 'up' ) {
+    if (!this['suman.block'] && downOrUp === 'up') {
       return this.parent.exitRightFromSumanBlock('up');
     }
 
@@ -375,18 +365,17 @@ export const proto = {
   },
 
   exitLeftFromSumanHook(downOrUp: string) {
-
     if (downOrUp === 'up') {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.')
+      throw new Error('must be either up or down.');
     }
 
     if (this.root === true) {
       let lm = this.getLeftMostWithMarker();
-      return lm.exitLeftFromSumanHook('down')
+      return lm.exitLeftFromSumanHook('down');
     }
 
     if (this['suman.hook'] && downOrUp === 'up') {
@@ -415,18 +404,17 @@ export const proto = {
   },
 
   exitLeftFromSumanBlock(downOrUp: string) {
-
     if (downOrUp === 'up') {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.')
+      throw new Error('must be either up or down.');
     }
 
     if (this.root === true) {
       let lm = this.getLeftMostWithMarker();
-      return lm.exitLeftFromSumanBlock('down')
+      return lm.exitLeftFromSumanBlock('down');
     }
 
     if (this['suman.block'] && downOrUp === 'up') {
@@ -461,11 +449,10 @@ export const proto = {
   render(data: string) {
     directions.forEach(v => {
       if (typeof this[v] === 'string') {
-        this[v] = Handlebars.compile(this[v])(data)
+        this[v] = Handlebars.compile(this[v])(data);
       }
     });
 
     return this;
-  }
-
+  },
 };

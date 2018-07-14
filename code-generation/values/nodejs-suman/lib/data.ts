@@ -1,6 +1,6 @@
 'use strict';
 
-import {proto} from "./data-proto";
+import { proto } from './data-proto';
 
 ///////////////////////////////////////////////////
 
@@ -15,126 +15,123 @@ export interface ICopyableValue extends Partial<Copyable> {
 }
 
 export interface ICopyable {
-  [key: string]: ICopyableValue
+  [key: string]: ICopyableValue;
 }
 
-
-export const values = <ICopyable> {
-  
-  'nemo': {
-    'left': 'begin',
-    'middle': null,
-    'right': 'end'
+export const values = <ICopyable>{
+  nemo: {
+    left: 'begin',
+    middle: null,
+    right: 'end',
   },
-  
-  'top': {
+
+  top: {
     root: true,
     left: '#!/usr/bin/env node',
     middle: "'use strict';",
-    right: null
+    right: null,
   },
-  
-  'builder': {
-    left: `const {Builder, By, Key, until} = require('selenium-webdriver');`
+
+  builder: {
+    left: `const {Builder, By, Key, until} = require('selenium-webdriver');`,
   },
-  
+
   'driver.create': {
-    left: `const driver = new Builder().forBrowser('firefox').build();`
+    left: `const driver = new Builder().forBrowser('firefox').build();`,
   },
-  
+
   'driver.get': {
-    left: `await driver.get('{{driverGetURL}}');`
+    left: `await driver.get('{{driverGetURL}}');`,
   },
-  
+
   'driver.findElement': {
-    left: `await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);`
+    left: `await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);`,
   },
-  
+
   'driver.quit': {
-    left: `await driver.quit();`
+    left: `await driver.quit();`,
   },
-  
+
   'driver.wait.until.title': {
-    left: `await driver.wait(until.titleIs('webdriver - Google Search'), 1000);`
+    left: `await driver.wait(until.titleIs('webdriver - Google Search'), 1000);`,
   },
-  
-  'declare': {
-    left: "const suman = require('suman');"
+
+  declare: {
+    left: "const suman = require('suman');",
   },
-  
-  'init': {
-    left: 'const {Test} = suman.init(module);'
+
+  init: {
+    left: 'const {Test} = suman.init(module);',
   },
-  
-  'create': {
+
+  create: {
     name: 'create',
     left: 'Test.create((b, it, context, before, after, beforeEach, afterEach) => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
+
   'driver.find.hook': {
-    left: 'const el = h.supply.el = await driver.find(By.id())'
+    left: 'const el = h.supply.el = await driver.find(By.id())',
   },
-  
+
   'driver.find.testCase': {
-    left: 'const el = t.supply.el = await driver.find(By.id())'
+    left: 'const el = t.supply.el = await driver.find(By.id())',
   },
-  
-  'before': {
+
+  before: {
     'suman.hook': true,
     left: 'before(async h => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
+
   'after.always': {
     'suman.hook': true,
     left: 'after.always(async h => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
-  'after': {
+
+  after: {
     'suman.hook': true,
     left: 'after(async h => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
-  'beforeEach': {
+
+  beforeEach: {
     'suman.hook': true,
     left: 'beforeEach(async h => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
-  'afterEach': {
+
+  afterEach: {
     'suman.hook': true,
     left: 'afterEach(async h => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
-  'it': {
+
+  it: {
     left: 'it(async t => {',
     middle: null,
-    right: '});'
+    right: '});',
   },
-  
+
   'it.el': {
     left: 'const el = t.supply.el;',
   },
-  
-  'context': {
+
+  context: {
     'suman.block': true,
     left: 'context(b => {',
     middle: null,
-    right: '});'
-  }
-  
+    right: '});',
+  },
 };
 
-Object.keys(values).forEach(function (k) {
+Object.keys(values).forEach(function(k) {
   Object.setPrototypeOf(values[k], proto);
 });
