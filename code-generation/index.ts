@@ -1,4 +1,4 @@
-import { SceEvent, SceMain, Updateable, SCECodeGenType } from 'sce-plugin-typings';
+import { SCECodeGenType } from 'sce-plugin-typings';
 
 // generators
 import * as javajunit from './values/java-junit';

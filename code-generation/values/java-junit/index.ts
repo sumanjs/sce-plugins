@@ -1,4 +1,4 @@
-import { SceEvent, SceMain, Updateable } from 'sce-plugin-typings';
+import { SceEvent, SceMain } from 'sce-plugin-typings';
 import { values } from './lib/data';
 
 export class SCEPlugin implements SceMain {
@@ -40,10 +40,8 @@ export class SCEPlugin implements SceMain {
     return this.styledCode;
   }
 
-  onComplete() {}
+  setEvents(ev: SceEvent[]) {
 
-  onNextEvent(m: SceEvent | any, x: Updateable) {
-    // fire callback letting UI know of currently generated code
-    x.updateCode();
   }
+
 }

@@ -3,7 +3,6 @@
 import * as util from 'util';
 const directions = ['left', 'middle', 'right'];
 import * as Handlebars from 'handlebars';
-import { ICopyable } from './data';
 
 ///////////////////////////////////////////////////////
 

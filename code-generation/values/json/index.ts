@@ -39,7 +39,7 @@ export class SCEPlugin implements SceMain {
     return this.styledCode;
   }
 
-  onNextEvent(m: SceEvent) {
+  onNextEvent(m: SceEvent | any) {
     console.log('adding data to generated code...');
 
     if (this.inHook) {
@@ -82,6 +82,7 @@ export class SCEPlugin implements SceMain {
     this.currentNode = this.currentNode.setRightMost(values['it'].copy());
     this.currentNode.setLeftMost(values['it.el'].copy());
   }
+
   setEvents(events: SceEvent[]) {
     for (const event of events) {
       this.onNextEvent(event);

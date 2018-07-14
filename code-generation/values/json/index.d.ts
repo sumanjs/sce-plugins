@@ -4,10 +4,17 @@ export declare class SCEPlugin implements SceMain {
     private styledCode;
     static pluginType: string;
     static pluginName: string;
+    codeTreeRoot: any;
+    currentNode: any;
+    tempNode: any;
+    inHook: boolean;
+    inContextBlock: boolean;
+    ctxCount: number;
+    testCaseCount: number;
     constructor();
     initialize(): void;
-    getRawGeneratedCode(): string;
+    getRawGeneratedCode(): any;
     getStyledGeneratedCode(): string;
-    onNextEvent(ev: SceEvent): void;
+    onNextEvent(m: SceEvent | any): void;
     setEvents(events: SceEvent[]): void;
 }

@@ -1,4 +1,4 @@
-import { SceEvent, SceMain, Updateable } from 'sce-plugin-typings';
+import { SceEvent, SceMain } from 'sce-plugin-typings';
 
 export class SCEPlugin implements SceMain {
   private rawCode = '';
@@ -21,13 +21,18 @@ export class SCEPlugin implements SceMain {
     return this.styledCode;
   }
 
-  onComplete(x: Updateable) {
+  onComplete() {
     this.code.push('complete');
-    x.updateCode();
   }
 
-  onNextEvent(ev: SceEvent, x: Updateable) {
+  onNextEvent(ev: SceEvent) {
     this.code.push(this.code.length);
-    x.updateCode();
+  }
+
+  setEvents(events: SceEvent[]) {
+    for (const event of events) {
+      this.onNextEvent(event);
+    }
+    this.onComplete();
   }
 }
