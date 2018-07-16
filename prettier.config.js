@@ -2,8 +2,8 @@
 module.exports = {
   // Let the lines be up to 90 characters wide
   printWidth: 90,
-  // Use ugly single quotes everywhere, because that's what Alex likes.
-  singleQuote: true,
+  // Use double quotes. Of course.
+  singleQuote: false,
   // Indent size: 2
   tabWidth: 2,
   // Indent with spaces

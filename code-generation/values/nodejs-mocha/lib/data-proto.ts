@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import * as util from 'util';
-const directions = ['left', 'middle', 'right'];
-import * as Handlebars from 'handlebars';
+import * as util from "util";
+const directions = ["left", "middle", "right"];
+import * as Handlebars from "handlebars";
 
 ///////////////////////////////////////////////////////
 
@@ -15,23 +15,23 @@ export const proto = {
     return [this.left, this.middle, this.right]
       .map(function(v) {
         if (!v) {
-          return '';
+          return "";
         }
-        if (typeof v === 'string') {
+        if (typeof v === "string") {
           return v;
         }
         return v.generate();
       })
-      .join('\n');
+      .join("\n");
   },
 
   log(indent?: number) {
     // this is for debugging - log the entire tree by calling top.log()
     indent = indent || 0;
-    let ws = new Array(indent + 1).join(' '); //whitespace
+    let ws = new Array(indent + 1).join(" "); //whitespace
     directions.forEach(v => {
       const val = this[v];
-      if (typeof val === 'string') {
+      if (typeof val === "string") {
         console.log(ws, `/* ${v} */`, val);
       } else if (val) {
         console.log();
@@ -50,7 +50,7 @@ export const proto = {
     z[name] = Object.create(proto);
     z[name].padded = true;
     z[name].parent = z;
-    z[name]['middle'] = v;
+    z[name]["middle"] = v;
     v.parent = z[name];
     v.parent = z;
 
@@ -67,8 +67,8 @@ export const proto = {
     z[name] = Object.create(proto);
     z[name].parent = z;
     z[name].padded = true;
-    z[name]['middle'] = v;
-    z[name]['middle'].parent = z[name];
+    z[name]["middle"] = v;
+    z[name]["middle"].parent = z[name];
     v.parent = z;
 
     return v;
@@ -77,7 +77,7 @@ export const proto = {
   getRightMostNonStringNode() {
     if (!this.right) {
       return {
-        name: 'right',
+        name: "right",
         z: this,
       };
     }
@@ -88,7 +88,7 @@ export const proto = {
 
     if (!this.middle) {
       return {
-        name: 'middle',
+        name: "middle",
         z: this,
       };
     }
@@ -99,7 +99,7 @@ export const proto = {
 
     if (!this.left) {
       return {
-        name: 'left',
+        name: "left",
         z: this,
       };
     }
@@ -109,7 +109,7 @@ export const proto = {
     }
 
     if (this.root) {
-      throw new Error('all items are strings on root');
+      throw new Error("all items are strings on root");
     }
 
     return this.parent.getRightMostNonStringNode();
@@ -118,7 +118,7 @@ export const proto = {
   getLeftMostNonStringNode() {
     if (!this.left) {
       return {
-        name: 'left',
+        name: "left",
         z: this,
       };
     }
@@ -129,7 +129,7 @@ export const proto = {
 
     if (!this.middle) {
       return {
-        name: 'middle',
+        name: "middle",
         z: this,
       };
     }
@@ -140,7 +140,7 @@ export const proto = {
 
     if (!this.right) {
       return {
-        name: 'right',
+        name: "right",
         z: this,
       };
     }
@@ -150,7 +150,7 @@ export const proto = {
     }
 
     if (this.root) {
-      throw new Error('all items are strings on root');
+      throw new Error("all items are strings on root");
     }
 
     return this.parent.getLeftMostNonStringNode();
@@ -160,7 +160,7 @@ export const proto = {
     directions.reduce(
       ((a: any, b: any) => {
         if (this[b] && this[b].simpleMarker) a++;
-        if (a > 1) throw new Error('more than one simpleMarker.');
+        if (a > 1) throw new Error("more than one simpleMarker.");
         return a;
       }) as any,
       0
@@ -194,15 +194,15 @@ export const proto = {
 
     // return this.parent || this; //
     //
-    console.error('no marker:', util.inspect(this));
-    throw new Error('no marker');
+    console.error("no marker:", util.inspect(this));
+    throw new Error("no marker");
   },
 
   getLeftMostWithMarker() {
     directions.reduce(
       ((a: any, b: any) => {
         if (this[b] && this[b].simpleMarker) a++;
-        if (a > 1) throw new Error('more than one simpleMarker.');
+        if (a > 1) throw new Error("more than one simpleMarker.");
         return a;
       }) as any,
       0
@@ -234,21 +234,21 @@ export const proto = {
 
     // return this.parent || this;
 
-    console.error('no marker:', util.inspect(this));
-    throw new Error('no marker');
+    console.error("no marker:", util.inspect(this));
+    throw new Error("no marker");
   },
 
   getLeftMost() {
     if (!this.left) {
-      return 'left';
+      return "left";
     }
 
     if (!this.middle) {
-      return 'middle';
+      return "middle";
     }
 
     if (!this.right) {
-      return 'right';
+      return "right";
     }
 
     return this.parent.getLeftMost();
@@ -256,15 +256,15 @@ export const proto = {
 
   getRightMost() {
     if (!this.right) {
-      return 'right';
+      return "right";
     }
 
     if (!this.middle) {
-      return 'middle';
+      return "middle";
     }
 
     if (!this.left) {
-      return 'left';
+      return "left";
     }
 
     return this.parent.getRightMost();
@@ -272,7 +272,7 @@ export const proto = {
 
   clearAllMarkers() {
     directions.forEach(v => {
-      if (this[v] && typeof this[v] !== 'string') {
+      if (this[v] && typeof this[v] !== "string") {
         delete this[v].simpleMarker;
         this[v].clearAllMarkers();
       }
@@ -280,164 +280,164 @@ export const proto = {
   },
 
   exitRightFromSumanHook(downOrUp: string, prevWasHook: boolean) {
-    if (downOrUp === 'up') {
+    if (downOrUp === "up") {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.');
+      throw new Error("must be either up or down.");
     }
 
-    if (downOrUp === 'up' && prevWasHook) {
+    if (downOrUp === "up" && prevWasHook) {
       return this;
     }
 
     if (this.root === true) {
       let lm = this.getRightMostWithMarker();
-      return lm.exitRightFromSumanHook('down');
+      return lm.exitRightFromSumanHook("down");
     }
 
-    if (this['suman.hook'] && downOrUp === 'up') {
-      return this.parent.exitRightFromSumanHook('up', true);
+    if (this["suman.hook"] && downOrUp === "up") {
+      return this.parent.exitRightFromSumanHook("up", true);
     }
 
-    if (this['suman.hook'] && downOrUp === 'down') {
+    if (this["suman.hook"] && downOrUp === "down") {
       // we are done traversing down
       return this.parent.padded ? this.parent.parent : this.parent;
     }
 
-    if (!this['suman.hook'] && downOrUp === 'up') {
-      return this.parent.exitRightFromSumanHook('up');
+    if (!this["suman.hook"] && downOrUp === "up") {
+      return this.parent.exitRightFromSumanHook("up");
     }
 
-    if (downOrUp === 'down' && !this['suman.hook']) {
+    if (downOrUp === "down" && !this["suman.hook"]) {
       let node = this.getRightMostWithMarker();
       if (node.newNode) {
-        throw new Error('no new nodes.');
+        throw new Error("no new nodes.");
       }
-      return node.exitRightFromSumanHook('down');
+      return node.exitRightFromSumanHook("down");
     }
 
-    throw new Error('unhandled cased.');
+    throw new Error("unhandled cased.");
   },
 
   exitRightFromSumanBlock(downOrUp: string, prevWasHook: boolean) {
-    if (downOrUp === 'up') {
+    if (downOrUp === "up") {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.');
+      throw new Error("must be either up or down.");
     }
 
-    if (downOrUp === 'up' && prevWasHook) {
+    if (downOrUp === "up" && prevWasHook) {
       return this;
     }
 
     if (this.root === true) {
       let lm = this.getRightMostWithMarker();
-      return lm.exitRightFromSumanBlock('down');
+      return lm.exitRightFromSumanBlock("down");
     }
 
-    if (this['suman.block'] && downOrUp === 'up') {
-      return this.parent.exitRightFromSumanBlock('up', true);
+    if (this["suman.block"] && downOrUp === "up") {
+      return this.parent.exitRightFromSumanBlock("up", true);
     }
 
-    if (this['suman.block'] && downOrUp === 'down') {
+    if (this["suman.block"] && downOrUp === "down") {
       // we are done traversing down
       return this.parent.padded ? this.parent.parent : this.parent;
     }
 
-    if (!this['suman.block'] && downOrUp === 'up') {
-      return this.parent.exitRightFromSumanBlock('up');
+    if (!this["suman.block"] && downOrUp === "up") {
+      return this.parent.exitRightFromSumanBlock("up");
     }
 
-    if (downOrUp === 'down' && !this['suman.block']) {
+    if (downOrUp === "down" && !this["suman.block"]) {
       let node = this.getRightMostWithMarker();
       if (node.newNode) {
-        throw new Error('no new nodes.');
+        throw new Error("no new nodes.");
       }
-      return node.exitRightFromSumanBlock('down');
+      return node.exitRightFromSumanBlock("down");
     }
 
-    throw new Error('unhandled cased.');
+    throw new Error("unhandled cased.");
   },
 
   exitLeftFromSumanHook(downOrUp: string) {
-    if (downOrUp === 'up') {
+    if (downOrUp === "up") {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.');
+      throw new Error("must be either up or down.");
     }
 
     if (this.root === true) {
       let lm = this.getLeftMostWithMarker();
-      return lm.exitLeftFromSumanHook('down');
+      return lm.exitLeftFromSumanHook("down");
     }
 
-    if (this['suman.hook'] && downOrUp === 'up') {
-      return this.parent.exitLeftFromSumanHook('up');
+    if (this["suman.hook"] && downOrUp === "up") {
+      return this.parent.exitLeftFromSumanHook("up");
     }
 
-    if (this['suman.hook'] && downOrUp === 'down') {
+    if (this["suman.hook"] && downOrUp === "down") {
       // we are done traversing down
       // top.clearAllMarkers();
       return this.parent.padded ? this.parent.parent : this.parent;
     }
 
-    if (downOrUp === 'up' && !this['suman.hook']) {
-      return this.parent.exitLeftFromSumanHook('up');
+    if (downOrUp === "up" && !this["suman.hook"]) {
+      return this.parent.exitLeftFromSumanHook("up");
     }
 
-    if (downOrUp === 'down' && !this['suman.hook']) {
+    if (downOrUp === "down" && !this["suman.hook"]) {
       let node = this.getLeftMostWithMarker();
       if (node.newNode) {
-        throw new Error('no new nodes.');
+        throw new Error("no new nodes.");
       }
-      return node.exitLeftFromSumanHook('down');
+      return node.exitLeftFromSumanHook("down");
     }
 
-    throw new Error('unhandled cased.');
+    throw new Error("unhandled cased.");
   },
 
   exitLeftFromSumanBlock(downOrUp: string) {
-    if (downOrUp === 'up') {
+    if (downOrUp === "up") {
       this.simpleMarker = true;
     }
 
     if (!downOrUp) {
-      throw new Error('must be either up or down.');
+      throw new Error("must be either up or down.");
     }
 
     if (this.root === true) {
       let lm = this.getLeftMostWithMarker();
-      return lm.exitLeftFromSumanBlock('down');
+      return lm.exitLeftFromSumanBlock("down");
     }
 
-    if (this['suman.block'] && downOrUp === 'up') {
-      return this.parent.exitLeftFromSumanBlock('up');
+    if (this["suman.block"] && downOrUp === "up") {
+      return this.parent.exitLeftFromSumanBlock("up");
     }
 
-    if (this['suman.block'] && downOrUp === 'down') {
+    if (this["suman.block"] && downOrUp === "down") {
       // we are done traversing down
       return this.parent.padded ? this.parent.parent : this.parent;
     }
 
-    if (downOrUp === 'up' && !this['suman.block']) {
-      return this.parent.exitLeftFromSumanBlock('up');
+    if (downOrUp === "up" && !this["suman.block"]) {
+      return this.parent.exitLeftFromSumanBlock("up");
     }
 
-    if (downOrUp === 'down' && !this['suman.block']) {
+    if (downOrUp === "down" && !this["suman.block"]) {
       let node = this.getLeftMostWithMarker();
       if (node.newNode) {
-        throw new Error('no new nodes.');
+        throw new Error("no new nodes.");
       }
-      return node.exitLeftFromSumanBlock('down');
+      return node.exitLeftFromSumanBlock("down");
     }
 
-    throw new Error('unhandled cased.');
+    throw new Error("unhandled cased.");
   },
 
   copy() {
@@ -447,7 +447,7 @@ export const proto = {
 
   render(data: string) {
     directions.forEach(v => {
-      if (typeof this[v] === 'string') {
+      if (typeof this[v] === "string") {
         this[v] = Handlebars.compile(this[v])(data);
       }
     });

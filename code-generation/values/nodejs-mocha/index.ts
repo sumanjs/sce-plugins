@@ -1,10 +1,10 @@
-import { SceEvent, SceMain } from 'sce-plugin-typings';
+import { SceEvent, SceMain } from "sce-plugin-typings";
 
 export class SCEPlugin implements SceMain {
-  private rawCode = '';
-  private styledCode = '';
-  public static pluginType = 'code-generator';
-  public static pluginName = 'nodejs-mocha';
+  private rawCode = "";
+  private styledCode = "";
+  public static pluginType = "code-generator";
+  public static pluginName = "nodejs-mocha";
   public code = [] as any;
 
   constructor() {}
@@ -14,7 +14,7 @@ export class SCEPlugin implements SceMain {
   getRawGeneratedCode() {
     // return this.rawCode;
 
-    return 'poodles (nodejs-mocha) ' + this.code.join(' ');
+    return "poodles (nodejs-mocha) " + this.code.join(" ");
   }
 
   getStyledGeneratedCode() {
@@ -22,7 +22,7 @@ export class SCEPlugin implements SceMain {
   }
 
   onComplete() {
-    this.code.push('complete');
+    this.code.push("complete");
   }
 
   onNextEvent(ev: SceEvent) {

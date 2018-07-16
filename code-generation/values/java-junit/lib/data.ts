@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-import { proto } from './data-proto';
+import { proto } from "./data-proto";
 
 ///////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ export interface ICopyable {
 export const values = <ICopyable>{
   top: {
     root: true,
-    left: '#!/usr/bin/env node',
+    left: "#!/usr/bin/env node",
     middle: "'use strict';",
     right: null,
   },
@@ -30,23 +30,23 @@ export const values = <ICopyable>{
     left: `const {Builder, By, Key, until} = require('selenium-webdriver');`,
   },
 
-  'driver.create': {
+  "driver.create": {
     left: `const driver = new Builder().forBrowser('firefox').build();`,
   },
 
-  'driver.get': {
+  "driver.get": {
     left: `await driver.get('{{driverGetURL}}');`,
   },
 
-  'driver.findElement': {
+  "driver.findElement": {
     left: `await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);`,
   },
 
-  'driver.quit': {
+  "driver.quit": {
     left: `await driver.quit();`,
   },
 
-  'driver.wait.until.title': {
+  "driver.wait.until.title": {
     left: `await driver.wait(until.titleIs('webdriver - Google Search'), 1000);`,
   },
 
@@ -55,74 +55,74 @@ export const values = <ICopyable>{
   },
 
   init: {
-    left: 'const {Test} = suman.init(module);',
+    left: "const {Test} = suman.init(module);",
   },
 
   create: {
-    name: 'create',
-    left: 'Test.create((b, it, context, before, after, beforeEach, afterEach) => {',
+    name: "create",
+    left: "Test.create((b, it, context, before, after, beforeEach, afterEach) => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
-  'driver.find.hook': {
-    left: 'const el = h.supply.el = await driver.find(By.id())',
+  "driver.find.hook": {
+    left: "const el = h.supply.el = await driver.find(By.id())",
   },
 
-  'driver.find.testCase': {
-    left: 'const el = t.supply.el = await driver.find(By.id())',
+  "driver.find.testCase": {
+    left: "const el = t.supply.el = await driver.find(By.id())",
   },
 
   before: {
-    'suman.hook': true,
-    left: 'before(async h => {',
+    "suman.hook": true,
+    left: "before(async h => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
-  'after.always': {
-    'suman.hook': true,
-    left: 'after.always(async h => {',
+  "after.always": {
+    "suman.hook": true,
+    left: "after.always(async h => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
   after: {
-    'suman.hook': true,
-    left: 'after(async h => {',
+    "suman.hook": true,
+    left: "after(async h => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
   beforeEach: {
-    'suman.hook': true,
-    left: 'beforeEach(async h => {',
+    "suman.hook": true,
+    left: "beforeEach(async h => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
   afterEach: {
-    'suman.hook': true,
-    left: 'afterEach(async h => {',
+    "suman.hook": true,
+    left: "afterEach(async h => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
   it: {
-    left: 'it(async t => {',
+    left: "it(async t => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 
-  'it.el': {
-    left: 'const el = t.supply.el;',
+  "it.el": {
+    left: "const el = t.supply.el;",
   },
 
   context: {
-    'suman.block': true,
-    left: 'context(b => {',
+    "suman.block": true,
+    left: "context(b => {",
     middle: null,
-    right: '});',
+    right: "});",
   },
 };
 

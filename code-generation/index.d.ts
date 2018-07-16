@@ -1,2 +1,2 @@
-import { SCECodeGenType } from 'sce-plugin-typings';
+import { SCECodeGenType } from "sce-plugin-typings";
 export declare const plugins: Array<SCECodeGenType>;
