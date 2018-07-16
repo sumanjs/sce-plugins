@@ -8,6 +8,5 @@ export declare class SCEPlugin implements SceMain {
     initialize(): void;
     getRawGeneratedCode(): string;
     getStyledGeneratedCode(): string;
-    onNextEvent(ev: SceEvent): void;
     setEvents(events: SceEvent[]): void;
 }

@@ -19,13 +19,9 @@ export class SCEPlugin implements SceMain {
     return this.styledCode;
   }
 
-  onNextEvent(ev: SceEvent) {
-
-  }
-
   setEvents(events: SceEvent[]) {
     for (const event of events) {
-      this.onNextEvent(event);
+      // do something useful with each event here
     }
   }
 

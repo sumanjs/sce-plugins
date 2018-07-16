@@ -39,7 +39,7 @@ export class SCEPlugin implements SceMain {
     return this.styledCode;
   }
 
-  onNextEvent(m: SceEvent) {
+  private onNextEvent(m: SceEvent) {
     console.log('adding data to generated code...');
 
     if (this.inHook) {

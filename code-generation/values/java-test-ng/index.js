@@ -12,12 +12,9 @@ var SCEPlugin = (function () {
     SCEPlugin.prototype.getStyledGeneratedCode = function () {
         return this.styledCode;
     };
-    SCEPlugin.prototype.onNextEvent = function (ev) {
-    };
     SCEPlugin.prototype.setEvents = function (events) {
         for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
             var event = events_1[_i];
-            this.onNextEvent(event);
         }
     };
     SCEPlugin.pluginType = 'code-generator';
