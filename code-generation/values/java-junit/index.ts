@@ -1,5 +1,5 @@
 import { SceEvent, SceMain } from "sce-plugin-typings";
-import { values } from "./lib/data";
+import { values } from "../../lib/data";
 
 export class SCEPlugin implements SceMain {
   // rawGeneratedCode = '';

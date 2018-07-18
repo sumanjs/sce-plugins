@@ -14,7 +14,7 @@ export class SCEPlugin implements SceMain {
   getRawGeneratedCode() {
     // return this.rawCode;
 
-    return "poodles (nodejs-mocha) " + this.code.join(" ");
+    return "poodles2 (nodejs-mocha) " + this.code.join(" ");
   }
 
   getStyledGeneratedCode() {

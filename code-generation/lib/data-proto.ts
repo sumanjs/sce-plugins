@@ -2,7 +2,7 @@
 
 import * as util from "util";
 const directions = ["left", "middle", "right"];
-import * as Handlebars from "handlebars";
+import { compile } from "handlebars/runtime";
 
 ///////////////////////////////////////////////////////
 
@@ -448,7 +448,7 @@ export const proto = {
   render(data: string) {
     directions.forEach(v => {
       if (typeof this[v] === "string") {
-        this[v] = Handlebars.compile(this[v])(data);
+        this[v] = compile(this[v])(data);
       }
     });
 
