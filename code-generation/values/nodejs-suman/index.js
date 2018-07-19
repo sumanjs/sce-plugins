@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var data_1 = require("../../lib/data");
+var data_1 = require("./lib/data");
 var SCEPlugin = (function () {
     function SCEPlugin() {
         this.rawCode = "";
