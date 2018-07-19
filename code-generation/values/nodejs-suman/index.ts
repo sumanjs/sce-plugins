@@ -20,7 +20,7 @@ export class SCEPlugin implements SceMain {
 
   constructor() {}
 
-  initialize() {
+  private initialize() {
     this.currentNode = this.currentNode.setLeftMost(values.declare.copy());
     this.currentNode = this.currentNode.setLeftMost(values.init.copy());
     this.currentNode = this.currentNode.setLeftMost(values.create.copy());
@@ -83,6 +83,7 @@ export class SCEPlugin implements SceMain {
     this.currentNode.setLeftMost(values["it.el"].copy());
   }
   setEvents(events: SceEvent[]) {
+    this.initialize();
     for (const event of events) {
       this.onNextEvent(event);
     }

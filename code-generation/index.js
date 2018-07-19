@@ -4,9 +4,11 @@ var javajunit = require("./values/java-junit");
 var javatestng = require("./values/java-test-ng");
 var nodejsmocha = require("./values/nodejs-mocha");
 var nodejssuman = require("./values/nodejs-suman");
+var json = require("./values/json");
 exports.plugins = [
-  javajunit.SCEPlugin,
-  javatestng.SCEPlugin,
-  nodejsmocha.SCEPlugin,
-  nodejssuman.SCEPlugin,
+    javajunit.SCEPlugin,
+    javatestng.SCEPlugin,
+    nodejsmocha.SCEPlugin,
+    nodejssuman.SCEPlugin,
+    json.SCEPlugin,
 ];
