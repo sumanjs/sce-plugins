@@ -32,6 +32,7 @@
     "sce-plugin-typings": "latest"
   },
   "dependencies": {
+    "@sce/code-generation": "^0.0.1001",
     "handlebars": "^4.0.11"
   }
 }
