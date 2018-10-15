@@ -1,24 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var code_generation_1 = require("@sce/code-generation");
 var SCEPlugin = (function () {
     function SCEPlugin() {
-        this.rawCode = "";
-        this.styledCode = "";
+        this.events = [];
+        this.typescriptGenerator = new code_generation_1.TypeScriptGenerator();
     }
-    SCEPlugin.prototype.initialize = function () { };
     SCEPlugin.prototype.getRawGeneratedCode = function () {
-        return "gnarnia (java testng)";
+        return this.typescriptGenerator.generate(this.events);
     };
     SCEPlugin.prototype.getStyledGeneratedCode = function () {
-        return this.styledCode;
+        return this.typescriptGenerator.generate(this.events);
     };
     SCEPlugin.prototype.setEvents = function (events) {
-        for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
-            var event = events_1[_i];
-        }
+        this.events = events;
+        this.typescriptGenerator.generate(this.events);
     };
     SCEPlugin.pluginType = "code-generator";
-    SCEPlugin.pluginName = "java-test-ng";
+    SCEPlugin.pluginName = "typescript-generator";
     return SCEPlugin;
 }());
 exports.SCEPlugin = SCEPlugin;

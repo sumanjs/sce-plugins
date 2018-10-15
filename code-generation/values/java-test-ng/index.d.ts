@@ -1,4 +1,4 @@
-import { SceEvent, SceMain, Updateable } from "sce-plugin-typings";
+import { SceEvent, SceMain } from "sce-plugin-typings";
 export declare class SCEPlugin implements SceMain {
     private rawCode;
     private styledCode;
@@ -8,6 +8,5 @@ export declare class SCEPlugin implements SceMain {
     initialize(): void;
     getRawGeneratedCode(): string;
     getStyledGeneratedCode(): string;
-    onComplete(): void;
-    onNextEvent(ev: SceEvent, x: Updateable): void;
+    setEvents(events: SceEvent[]): void;
 }

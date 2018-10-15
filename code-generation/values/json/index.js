@@ -2,18 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var SCEPlugin = (function () {
     function SCEPlugin() {
+        this.events = [];
     }
-    SCEPlugin.prototype.initialize = function () {
-    };
     SCEPlugin.prototype.getRawGeneratedCode = function () {
-        return "parachute (java junit)";
+        return JSON.stringify(this.events);
     };
     SCEPlugin.prototype.getStyledGeneratedCode = function () {
-        return this.getRawGeneratedCode();
+        return JSON.stringify(this.events, null, "  ");
     };
-    SCEPlugin.prototype.setEvents = function (ev) { };
+    SCEPlugin.prototype.setEvents = function (events) {
+        this.events = events;
+    };
     SCEPlugin.pluginType = "code-generator";
-    SCEPlugin.pluginName = "java-junit";
+    SCEPlugin.pluginName = "json";
     return SCEPlugin;
 }());
 exports.SCEPlugin = SCEPlugin;

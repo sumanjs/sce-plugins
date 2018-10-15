@@ -19,7 +19,10 @@
     "extension",
     "google-chrome"
   ],
-  "author": "Olegzandr VD",
+  "author": [
+    "Olegzandr VD",
+    "Tim Mensch"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/sumanjs/sce-plugins/issues"
@@ -32,6 +35,7 @@
     "sce-plugin-typings": "latest"
   },
   "dependencies": {
+    "@sce/code-generation": "^0.0.1001",
     "handlebars": "^4.0.11"
   }
 }
